@@ -3,16 +3,33 @@
 <head>
     {% load staticfiles %}
     <meta charset="UTF-8">
-    <title>HotelBooking</title>
+     <title>HotelBooking</title>
+    <style>
+    .nav {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+        -moz-column-width: 100px; /* Firefox */
+        column-width: 100px;
+    }
+</style>
+    <style>
+
+        img{
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
 </head>
-<body bgcolor="#7fffd4">
+<body bgcolor="#00ffff">
     <table align="center">
         <tr>
             <td>
                 <img src="{% static 'images/hotel_icon.png' %}" width=150 height="150">
             </td>
             <td>
-                <font size="8" face="Arial">
+                <font size="10" face="Century Gothic">
                     Online Hotel Booking
                 </font>
             </td>
@@ -29,51 +46,158 @@
     </table>
     <table align="center" border="2">
         <tr>
-            <th width="120">
-                <a href="/openHomePage/?type=home">
-                    Home
-                </a>
-            </th>
-            <th width="120">Services</th>
-            <th width="120">
-                <a href="/openUserLogin/?type=h_user">
-                    User
-                </a>
-            </th>
-            <th width="120">Admin</th>
-            <th width="120">Contact Us</th>
+            <th width="120"><a href="/openHomePage/?type=home">Home</a></th>
+            <th width="120"><a href="/openServicesPage/?type=h_services">Services</a></th>
+            <th width="120"><a href="/openUserLogin/?type=h_user">User</a></th>
+            <th width="120"><a href="/admin/" target="_blank"> Admin</a></th>
+            <th width="120"><a href="/openContactUsPage/?type=h_contact">Contact Us</a></th>
+            <th width="120"><a href="/openCancelPage/?type=u_cancel">CANCEL</a> </th>
         </tr>
     </table>
     {% if type == "home" %}
-    <table align="center">
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-            <td width="350">
-                <font size="4" face="Arial Rounded MT Bold">
-                    Online hotel reservations are a popular method for booking hotel rooms. Travelers can book rooms on a computer by using online security to protect their privacy and financial information and by using several online travel agents to compare prices and facilities at different hotels.
-                </font>
-            </td>
-            <td>
-                <img src="{% static 'images/main_page_icon.png' %}" width="150" height="150">
-            </td>
-        </tr>
-    </table>
+     <table align="left">
+         <td align="center">
+            <tr><td width="200"><h2>CHECK HERE FOR ROOMS<br>
+            AVAILABLE OR NOT:</h2></td></tr>
+                    <tr><td>Select Room:<select><option value="">Select</option>
+                                    <option value="">AC</option>
+                                    <option value="">Non-AC</option>
+                                    <option value="">Luxary</option>
+                                    <option value="">Delux</option>
+        </select></tr></td><br>
+        <tr><td>Check IN:<select><option value="DD">DD</option></select>
+            <select><option value="MONTH">MONTH</option></select>
+                              <select><option value="YEAR">YEAR</option>
+        </select></td></tr><br>
+        <tr><td>Check OUT:<select><option value="DD">DD</option></select>
+            <select><option value="MONTH">MONTH</option></select>
+                              <select><option value="YEAR">YEAR</option>
+        </select></td></tr><br>
+         <tr align="center"><td colspan="2"><input type="submit" value="CHECK"></td></tr></table>
+        
+        <article>
+            <h1>Hotel AKBAR is happy to welcome</h1>
+            <img src="{% static 'images/Akbar hotel.png' %}" width="150" height="150">
+  <p>Google Chrome is a free, open-source web browser developed by Google, released in 2008.</p>
+</article>
+
+
+
+
     {% endif %}
     {% if type == "h_user" %}
-        <form action="//" method="post">
+        <form  action="//" method="post">
             {% csrf_token %}
             <table align="center">
-                <tr><th height="50" width="200">User Login Page</th></tr>
-                <tr><th height="50" width="200"><input type="text" placeholder="UserName" required name="uname"></th></tr>
-                <tr><th height="50" width="200"><input type="text" placeholder="PassWord" required name="pass"></th> </tr>
-                <tr><th height="50" width="200"><input type="submit" value="Login"></th> </tr>
-                <tr><th>
-                    <a href="/openUserRegister/?type=u_register">New User Register</a>
+                <tr><th align="center" colspan="2">User Login</th></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr><th>UserName</th><td><input type="text" placeholder="UserName" required name="uname"></td></tr>
+                <tr><th>Password:</th><td><input type="text" placeholder="PassWord" required name="pass"></td> </tr>
+                <tr><th align="center"><td><input type="submit" value="Login"></td></tr></th>
+                <tr><th colspan="2"><a href="//">Forgot password?</a></th></tr>
+                    <tr><th colspan="2"><a href="/openUserRegister/?type=u_register">New User Register</a>
                 </th></tr>
             </table>
         </form>
     {% endif %}
+    {% if type == "h_services" %}
+        <form action="//" method="post">
+        {% csrf_token %}
+            <table align="center" border="0">
+                <tr></tr>
+                <tr></tr>
+
+                <tr><td><img src="{% static 'services/449ce32523f66b58a1abed42c90d74ec.png' %}" width="150" height="150"> </td>
+                    <td><img src="{% static 'services/elegant-interior-design-hotel-room-house_148900.jpg' %}" width="150" height="150"></td>
+                    <td><img src="{% static 'services/7131.jpg' %}" width="150" height="150"></td>
+                    <td><img src="{% static 'services/hotel-bed-linen.png' %}" width="150" height="150"></td>
+                    <td><img src="{% static 'services/the-surrey-new-york-1.png' %}" width="150" height="150"></td>
+                    <td><img src="{% static 'services/two-beds.png' %}" width="150" height="150"></td>
+                    <td><img src="{% static 'services/IMP_Standard_Double_07.jpg' %}" width="150" height="150"></td>
+                </tr>
+                </table>
+        </form>
+        <h2 align="center"><font size="2" face="Arial"> We Offer Several kinds of rooms </font></h2>
+        <table align="center" border="1" bgcolor="#f0ffff">
+        <tr>
+            <td width="50">
+                <img src="{% static 'services/elegant-interior-design-hotel-room-house_148900.jpg' %}" width="150" height="150">
+            </td></tr></table>
+        <table align="center">
+            <tr><th><h3>AC Rooms</h3>
+                <p>Very Comfortable air<br>
+                    conditioned rooms with all basic<br>
+                    emenitieas in royal way</p><hr>
+            </tr></th>
+                </table>
+
+        <table align="center" border="1" bgcolor="white">
+            <tr>
+                <td width="50">
+                 <img src="{% static 'services/IMP_Standard_Double_07.jpg' %}" width="150" height="150">
+                    </td></tr></table>
+
+        <table align="center">
+            <tr><th><h3>Non-AC Rooms</h3>
+                <p>Very Comfortable and affordable<br>
+                    luxury rooms with basic<br>
+                    emenitieas in a grand manner</p><hr>
+            </tr></th>
+                </table>
+        {% endif %}
+    {% if type == "u_register" %}
+        <form action="/registerUser/" method="post">  <!--verify it-->
+            {% csrf_token %}
+                <table align="center" border="0">
+                    <tr>
+                        <th width="150">
+                            <h3 align="right">User Register</h3>
+                        </th>
+                    </tr>
+                    <tr><th>First Name:</th><td><input type="text" placeholder="Enter FirstName" required name="u_fname"></td></tr>
+                    <tr><th>LastName:</th><td><input type="text" placeholder="Enter LastName" required name="u_lname"></td></tr>
+                    <tr><th>Email_Id: </th><td><input type="email" placeholder="Enter Email-Id" required name="u_email"></td> </tr>
+                    <tr><th>Password:</th><td><input type="password" placeholder="Enter Password" required name="u_pass"></td> </tr>
+                    <tr><th>Re-Password:</th><td><input type="password" placeholder="Enter Re-Enter Password" required name="u_rpass"></td></tr>
+                    <tr><th>Contact No:</th><td><input type="number" placeholder="Contact No" required name="u_cno"></td></tr>
+                    <tr><th>Address:</th><td><input type="text" placeholder="Full Address" required name="u_add"></td></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <td><th><input type="Submit" value="Submit">
+                        <input type="reset" value="Reset"></th> </td><!--register successfully-->
+
+                </table>
+        </form>
+    {% endif %}
+    {% if type == "u_cancel" %}
+        <form action="/openHomePage/" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr></tr>
+            <tr></tr>
+            <tr><th>User Name:</th><td><input type="text" placeholder="UserName"required name="uname"></td></tr></th>
+            <tr><th>RoomNumber:</th><td><input type="number" placeholder="RoomNumber" required name="uroom"></td></tr></th>
+            <tr><th>Cust_Id:</th><td><input type="number" required name="uid"></td></th> </tr>
+            <tr><th><td><input type="submit" value="Cancel"></td> </th> </tr><!--your booking room will be canceled-->
+
+        </table>
+         </form>
+    {% endif %}
+    {% if type == "h_contact" %}
+        <form action="/openHomePage/" method="post">
+            {% csrf_token %}
+        <table align="center">
+            <tr><th>Name:</th><td><input type="text" placeholder="Name" required name="name"></td></tr>
+            <tr><th>Email_Id:</th><td><input type="email" placeholder="Email" required name="email"></td></tr>
+            <tr><th>Phone no:</th><td><input type="number" placeholder="Phone" required name="phone"> </td></tr>
+            <tr><th>Message:</th><td><textarea name="text" placeholder="Write Something.." style="height:100px"></textarea></td></tr>
+            <tr align="center"><td colspan="2"><input type="submit" value="Submit"></td></tr>
+        </table>
+
+        </form>
+    {% endif %}
+
+
 </body>
 </html>
